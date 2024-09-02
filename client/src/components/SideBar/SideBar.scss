@@ -1,0 +1,25 @@
+.side-bar-off {
+    background-color: rgba(0, 0, 0, 0.555);
+    height: 0;
+    width: 100%;
+    position: fixed;
+    overflow: hidden;
+    z-index: 999;
+    transition: height .5s, opacity .5s;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  
+  .side-bar-on {
+    background-color: rgba(0, 0, 0, 0.897);
+    height: 190px;
+    width: 100%;
+    position: fixed;
+    overflow: hidden;
+    z-index: 999;
+    transition: height .5s, opacity .5s;
+    top: 0;
+    left: 0;
+    opacity: 1;
+  }

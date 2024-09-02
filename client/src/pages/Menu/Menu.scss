@@ -1,0 +1,11 @@
+
+body {
+    overflow-x: hidden;
+    background-color: #0D0D0D;
+  }
+  
+  .sticky-container {
+    position: sticky;
+    top: 0;
+    z-index: 100; 
+  }
