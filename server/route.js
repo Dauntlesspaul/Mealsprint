@@ -158,10 +158,10 @@ router.get('/intro-products', async (req, res) => {
     const slug = req.query.category;
     if(slug === 'all'){
      const products = await Foods.find({section: 'home'})
-     res.status(200).send(products)
+      return res.status(200).send(products)
     }else{
       const products = await Foods.find({category: slug})
-      res.status(200).send(products)
+      return res.status(200).send(products)
     }
   } catch (err) {
     console.error(err);
@@ -173,7 +173,7 @@ router.get('/all-products', async (req, res) => {
   try {
    
      const products = await Foods.find()
-     res.status(200).send(products)
+     return res.status(200).send(products)
   } catch (err) {
     console.error(err);
     return res.status(500).send('Internal Server Error');
@@ -207,7 +207,7 @@ router.get('/search', async (req, res) => {
       return res.status(404).send([{ message: 'No products found' }]);
     }
 
-    res.status(200).send(products);
+    return  res.status(200).send(products);
     
   } catch (err) {
     console.error(err);
