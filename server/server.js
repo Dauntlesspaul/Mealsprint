@@ -18,7 +18,7 @@ connectDB();
 
 app.use('/api/stripe/webhook',express.raw({ type: 'application/json' }), handleWebhook)
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://mealsprint.vercel.app',
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
