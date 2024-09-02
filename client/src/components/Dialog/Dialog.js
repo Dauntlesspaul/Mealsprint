@@ -51,7 +51,7 @@ export default function CustomizedDialogs({ open, close }) {
     if(notification){
       let timer = setTimeout(()=>{
         dispatch(notificationOff())
-      }, 3000)
+      }, 2000)
 
       return ()=> clearTimeout(timer)
     }

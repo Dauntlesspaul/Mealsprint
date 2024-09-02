@@ -74,7 +74,7 @@ function OrderSlide() {
           if(isdeleted){
             let timer = setTimeout(() => {
               dispatch(resetDelete())
-            }, 3000)
+            }, 2000)
             return ()=> clearTimeout(timer)
           }
           }, [dispatch, isdeleted])
