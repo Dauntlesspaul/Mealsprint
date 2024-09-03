@@ -25,6 +25,7 @@ import { STATUS } from '../../utils/status.js';
 import Loading from '../../components/Loading/Loading.js';
 import { getAuthStatus, googleAuth  } from '../../store/googleSlice.js';
 import { useGoogleLogin } from '@react-oauth/google';
+import { setOrderOff } from '../../store/orderSlice.js';
 
 function Signup() {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ function Signup() {
   const googleAuthStatus = useSelector(getAuthStatus)
   useEffect(() => {
     dispatch(setSidebarOff())
+    dispatch(setOrderOff())
     dispatch(fetchUserData());
   }, [dispatch]);
 

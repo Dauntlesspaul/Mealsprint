@@ -12,6 +12,7 @@ const path = require('path');
 
 const app = express();
 
+
 app.set('trust proxy', 1);
 
 connectDB();
@@ -36,8 +37,6 @@ app.use(session({
   saveUninitialized: false,
   store: MongoStore.create({ mongoUrl: process.env.MONGO_URI, ttl: 14 * 24 * 60 * 60 }),
   cookie: { 
-    secure: true, 
-    sameSite: 'Lax', 
     maxAge: 1000 * 60 * 60 * 24 * 14, 
   }
 }));

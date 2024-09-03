@@ -5,6 +5,8 @@ const Order = require('./model/Order');
 const { main, mainHTML } = require('./config/nodeMailer');
 const receiptEmail = require('./utils/receiptEmail')
 const endpointSecret = process.env.END_POINT_SECRET;
+console.log(endpointSecret)
+console.log(stripe)
 
 exports.handleWebhook = async (req, res) => {
 
