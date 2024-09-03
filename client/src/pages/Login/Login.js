@@ -61,6 +61,11 @@ function Login() {
     dispatch(setSidebarOff())
     dispatch(setOrderOff())
     dispatch(fetchUserData())
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = bg;
+    document.head.appendChild(link);
   }, [dispatch])
 
   const validationSchema = Yup.object({
@@ -111,8 +116,8 @@ function Login() {
         <div className="relative h-[300px]">
           <img src={bg} alt="" className="w-full h-full object-cover object-bottom" />
           <div className="absolute top-0 left-0 w-full h-full mt-7 px-3 xl:px-40 md:px-10">
-              <div onClick={()=>navigate('/')} className='md:hidden grid place-items-center w-full'>
-              <img src={icon} alt='' className='h-16 w-auto aspect-auto' />
+              <div  className='md:hidden grid place-items-center w-full'>
+              <img onClick={()=>navigate('/')} src={icon} alt='' className='h-16  w-auto aspect-auto' />
               </div>
               <div className=' md:hidden flex justify-between w-full items-center my-4'>
                 <IconButton

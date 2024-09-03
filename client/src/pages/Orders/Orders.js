@@ -30,6 +30,11 @@ function Orders() {
     dispatch(setSidebarOff());
     dispatch(setOrderOff());
     dispatch(fetchMyOrders());
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = bg;
+    document.head.appendChild(link);
   }, [dispatch]);
 
 
@@ -56,8 +61,8 @@ function Orders() {
       <div className="relative h-[300px]">
         <img src={bg} alt="" className="w-full h-full object-cover object-bottom" />
         <div className="absolute top-0 left-0 w-full h-full mt-7 px-4 xl:px-40 md:px-30">
-          <div onClick={()=>navigate('/')} className="md:hidden grid place-items-center w-full">
-            <img src={icon} alt="" className="h-16 w-auto aspect-auto" />
+          <div className="md:hidden grid place-items-center w-full">
+            <img onClick={()=>navigate('/')} src={icon} alt="" className="h-16 w-auto aspect-auto" />
           </div>
           <div className="md:hidden flex justify-between w-full items-center my-4">
             <IconButton sx={{ marginLeft: '-12px' }} onClick={() => { dispatch(setSidebarOn()); }}>

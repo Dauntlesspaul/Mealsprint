@@ -35,7 +35,13 @@ function Home() {
     useEffect(()=>{
         dispatch(setSidebarOff())
         dispatch(setOrderOff())
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = bg;
+        document.head.appendChild(link);
       }, [dispatch])
+      
     const cartItem = useSelector(getCartStatus)
 
     if(STATUS.LOADING === isLoading || STATUS.IDLE === isLoading){
