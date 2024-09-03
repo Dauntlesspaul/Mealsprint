@@ -89,6 +89,27 @@ function About() {
                     </div>
                 </div>
             </section>
+            <section className='px-3 md:grid md:place-items-center'>
+              <h2 className='text-white text-xl text-center xl:text-[35px] lg:text-[26px] my-5 font-bold'>We believe in making quality foods</h2>
+              <div className='md:flex md:justify-between md:w-3/4 lg:w-2/4 2xl:w-2/4'>
+                  <div className='grid place-items-center'>
+                      <h2 className='text-white text-[46px] font-bold'>1M+</h2>
+                      <p className='text-[#8d8c8c] text-sm'>Happy Customers</p>
+                  </div>
+                  <div className='grid place-items-center'>
+                      <h2 className='text-white text-[46px] font-bold'>98%</h2>
+                      <p className='text-[#8d8c8c] text-sm'>Customer Satisfaction</p>
+                  </div>
+                  <div className='grid place-items-center'>
+                      <h2 className='text-white text-[46px] font-bold'>20+</h2>
+                      <p className='text-[#8d8c8c] text-sm'>Our Branches</p>
+                  </div>
+                  <div className='grid place-items-center'>
+                      <h2 className='text-white text-[46px] font-bold'>10k+</h2>
+                      <p className='text-[#8d8c8c] text-sm'>Total Employees</p>
+                  </div>
+              </div>
+          </section>
        </div>
     </div>
   );
