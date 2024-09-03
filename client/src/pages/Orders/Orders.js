@@ -32,9 +32,18 @@ function Orders() {
     dispatch(fetchMyOrders());
   }, [dispatch]);
 
+
   const orderList = useSelector(getOrderList);
   const status = useSelector(getOrderListStatus);
   const cartItems = useSelector(getCartStatus);
+
+
+  useEffect(()=>{
+    if(status === STATUS.FAILED){
+     navigate('/login')
+    }
+   }, [status])
+   
 
   if (STATUS.LOADING === status) {
     return <Loading />;

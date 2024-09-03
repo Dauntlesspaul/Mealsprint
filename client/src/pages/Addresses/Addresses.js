@@ -51,6 +51,12 @@ function Addresses() {
   }, [dispatch])
 
   useEffect(()=>{
+    if(!userData.firstname){
+     navigate('/login')
+    }
+   }, [userData])
+
+  useEffect(()=>{
     if(STATUS.SUCCESS === status){
       dispatch(fetchUserData())
     }

@@ -21,12 +21,16 @@ function Header() {
   const currentPath = location.pathname;
   const cartItems = useSelector(getCartStatus)
   const dispatch = useDispatch()
-  useEffect(()=>{
-    dispatch(fetchUserData())
-  }, [dispatch])
+
  
   const userData = useSelector(getUserData);
   const isLoading = useSelector(getUserDataStatus);
+
+  useEffect(()=>{
+    if(isLoading === STATUS.IDLE){
+    dispatch(fetchUserData())
+    }
+  }, [dispatch, isLoading])
 
   const handleCartItems = () => {
     if(currentPath !== '/menu'){
