@@ -49,31 +49,35 @@ function Subscribe() {
           placeholder="Enter Email"
           className="p-3 h-11 rounded-3xl w-5/6 border border-black focus:outline-none"
         />
-        <Button
-          type='submit'
-          sx={{
+       <Button
+        type='submit'
+        sx={{
+          background: 'black',
+          width: {
+            xs: '83.33%', 
+            sm: '83.33%',
+            md: '150px', 
+          },
+          borderRadius: '30px',
+          color: 'white',
+          height: '44px',
+          fontWeight: '700',
+          textTransform: 'none',
+          '@media (min-width: 960px)': { 
+            width: '150px', 
+            padding: '3px 20px',
+          },
+          '&:hover': {
             background: 'black',
-            width: '83.33%',
-            borderRadius: '30px',
-            color: 'white',
-            height: '44px',
-            fontWeight: '700',
-            textTransform: 'none',
-            '@media (min-width: 767px)': {
-              width: 'max-content',
-              padding: '3px 20px',
-            },
-            '&:hover': {
-              background: 'black'
-            }
-          }}
-        >
-          {status === STATUS.LOADING ? (
-            <CircularProgress sx={{ color: 'white' }} size={20} />
-          ) : (
-            <span>Subscribe</span>
-          )}
-        </Button>
+          },
+        }}
+      >
+        {status === STATUS.LOADING ? (
+          <CircularProgress sx={{ color: 'white' }} size={20} />
+        ) : (
+          <span>Subscribe</span>
+        )}
+      </Button>
       </form>
     </div>
     </>);
