@@ -39,7 +39,7 @@ function Home() {
       }, [dispatch])
     const cartItem = useSelector(getCartStatus)
 
-    if(STATUS.LOADING === isLoading){
+    if(STATUS.LOADING === isLoading || STATUS.IDLE === isLoading){
         return <Loading />
     }
     return (
