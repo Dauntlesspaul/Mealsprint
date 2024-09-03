@@ -42,8 +42,8 @@ function Orders() {
     if(status === STATUS.FAILED){
      navigate('/login')
     }
-   }, [status])
-   
+   }, [status, navigate])
+
 
   if (STATUS.LOADING === status) {
     return <Loading />;

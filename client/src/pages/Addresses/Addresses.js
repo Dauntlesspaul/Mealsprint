@@ -54,7 +54,7 @@ function Addresses() {
     if(!userData.firstname){
      navigate('/login')
     }
-   }, [userData])
+   }, [userData, navigate]);
 
   useEffect(()=>{
     if(STATUS.SUCCESS === status){
