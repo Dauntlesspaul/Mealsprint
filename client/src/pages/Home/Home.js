@@ -12,7 +12,7 @@ import Sidebar from '../../components/SideBar/Sidebar.js';
 import IntroImg from '../../assets/images/chef.png';
 import Testimonies from '../../components/Testimonies/Testimonies.js';
 import Subscribe from '../../components/Subscribe/Subscribe.js';
-import { getIntroProducts, getIntroProductsFetchStatus, introProductsFetch } from '../../store/introProducts.js';
+import { getIntroProducts, introProductsFetch } from '../../store/introProducts.js';
 import MenuSection from '../../components/MenuSection/MenuSection.js';
 import { getCartStatus } from '../../store/cartSlice.js';
 import { useNavigate } from 'react-router-dom';
@@ -22,14 +22,16 @@ import { STATUS } from '../../utils/status.js';
 import Loading from '../../components/Loading/Loading.js';
 import OrderSlide from '../../components/OrderSlide/OrderSlide.js';
 import ScrollToTop from '../../components/Scroll/Button.js';
+import { allProductsFetch, AllProductsStatus } from '../../store/allproductsSlice.js';
 
 function Home() {
     const dispatch = useDispatch();
     const foodItem = useSelector(getIntroProducts);
     const navigate = useNavigate()
-    const isLoading = useSelector(getIntroProductsFetchStatus)
+    const isLoading = useSelector(AllProductsStatus)
     useEffect(() => {
         dispatch(introProductsFetch('all'));
+        dispatch(allProductsFetch())
     }, [dispatch]);
 
     useEffect(()=>{
@@ -41,7 +43,7 @@ function Home() {
         link.href = bg;
         document.head.appendChild(link);
       }, [dispatch])
-      
+
     const cartItem = useSelector(getCartStatus)
 
     if(STATUS.LOADING === isLoading || STATUS.IDLE === isLoading){
