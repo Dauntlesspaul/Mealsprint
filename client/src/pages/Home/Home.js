@@ -12,7 +12,7 @@ import Sidebar from '../../components/SideBar/Sidebar.js';
 import IntroImg from '../../assets/images/chef.png';
 import Testimonies from '../../components/Testimonies/Testimonies.js';
 import Subscribe from '../../components/Subscribe/Subscribe.js';
-import { getIntroProducts, introProductsFetch } from '../../store/introProducts.js';
+import { getIntroProducts, getIntroProductsFetchStatus, introProductsFetch } from '../../store/introProducts.js';
 import MenuSection from '../../components/MenuSection/MenuSection.js';
 import { getCartStatus } from '../../store/cartSlice.js';
 import { useNavigate } from 'react-router-dom';
@@ -20,7 +20,6 @@ import { setOrderOff, setOrderOn } from '../../store/orderSlice.js';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { STATUS } from '../../utils/status.js';
 import Loading from '../../components/Loading/Loading.js';
-import { getUserData } from '../../store/profileSlice.js';
 import OrderSlide from '../../components/OrderSlide/OrderSlide.js';
 import ScrollToTop from '../../components/Scroll/Button.js';
 
@@ -28,7 +27,7 @@ function Home() {
     const dispatch = useDispatch();
     const foodItem = useSelector(getIntroProducts);
     const navigate = useNavigate()
-    const isLoading = useSelector(getUserData)
+    const isLoading = useSelector(getIntroProductsFetchStatus)
     useEffect(() => {
         dispatch(introProductsFetch('all'));
     }, [dispatch]);
