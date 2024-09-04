@@ -21,6 +21,7 @@ import SuccessPage from './pages/Success/Success';
 import Delivery from './pages/Delivery/Delivery';
 import ErrorPage from './pages/Error/Error';
 import ScrollPageToTop from './components/Scroll/PageScroll';
+import ProtectedRoute from './utils/userAccess';
 function App() {
   const client_id = process.env.REACT_APP_CLIENT_ID;
   return (
@@ -34,7 +35,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/signup' element={<Signup/>} />
-        <Route path='/login' element={<Login/>} />
+        <Route path='/login' element={<ProtectedRoute><Login/></ProtectedRoute>} />
         <Route path='/menu' element={<Menus/>} />
         <Route path='/post' element={<Post />} />
         <Route path='/user' element={<Profile/>} />

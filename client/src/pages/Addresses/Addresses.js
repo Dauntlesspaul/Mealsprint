@@ -16,7 +16,7 @@ import TextField from '@mui/material/TextField';
 import AlertDialogSlide from '../../components/Dialog/Logout.js'
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { fetchUserData, getUserData } from '../../store/profileSlice.js';
+import { fetchUserData, getUserData, getUserDataStatus, getUserLogInStatus } from '../../store/profileSlice.js';
 import { addressEdit, getEditStaus } from '../../store/newAddressSlice.js';
 import { STATUS } from '../../utils/status.js';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
@@ -24,6 +24,7 @@ import { deleteAddress, getDeleteStatus } from '../../store/deleteAddressSlice.j
 import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
 import { getCartStatus } from '../../store/cartSlice.js';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Loading from '../../components/Loading/Loading.js'
 
 
 const validationSchema = Yup.object({
@@ -44,11 +45,13 @@ function Addresses() {
   const deleteStatus = useSelector(getDeleteStatus)
   const cartItems = useSelector(getCartStatus);
   const navigate = useNavigate();
+  const isUserLoggedIn = useSelector(getUserLogInStatus)
+  const loginStatus = useSelector(getUserDataStatus)
 
   useEffect(()=>{
+    dispatch(fetchUserData())
     dispatch(setSidebarOff())
     dispatch(setOrderOff())
-    dispatch(fetchUserData())
   const link = document.createElement('link');
   link.rel = 'preload';
   link.as = 'image';
@@ -57,10 +60,10 @@ function Addresses() {
   }, [dispatch])
 
   useEffect(()=>{
-    if(!userData.firstname){
-     navigate('/login')
+    if(!isUserLoggedIn && loginStatus === STATUS.FAILED){
+       navigate('/login')
     }
-   }, [userData, navigate]);
+    }, [isUserLoggedIn, navigate, loginStatus])
 
   useEffect(()=>{
     if(STATUS.SUCCESS === status){
@@ -73,6 +76,10 @@ useEffect(()=>{
     dispatch(fetchUserData())
   }
 }, [dispatch, deleteStatus])
+
+if(!userData.firstname ){
+  return <Loading />;
+}
   
   return (
     <div className='min-h-screen bg-[white]'>

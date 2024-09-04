@@ -26,11 +26,11 @@ function Header() {
   const userData = useSelector(getUserData);
   const isLoading = useSelector(getUserDataStatus);
 
-  useEffect(()=>{
-    if(isLoading === STATUS.IDLE){
-    dispatch(fetchUserData())
+  useEffect(() => {
+    if (currentPath !== '/login' && currentPath !== '/signup') {
+      dispatch(fetchUserData());
     }
-  }, [dispatch, isLoading])
+  }, [dispatch, currentPath]);
 
   const handleCartItems = () => {
     if(currentPath !== '/menu'){

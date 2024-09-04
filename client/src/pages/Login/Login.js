@@ -27,7 +27,7 @@ import { getAccessStatus, getLoginInput, getLoginStaus, resetLoginStatus, setCha
 import {FormHelperText} from '@mui/material';
 import {STATUS} from '../../utils/status.js';
 import CustomizedSnackbars from '../../components/snackBar/SnackBar.js'
-import { fetchUserData, getUserDataStatus } from '../../store/profileSlice.js'
+import { getUserLogInStatus } from '../../store/profileSlice.js'
 import Loading from '../../components/Loading/Loading.js'
 import { getAuthStatus, googleAuth } from '../../store/googleSlice.js';
 import { useGoogleLogin } from '@react-oauth/google';
@@ -43,7 +43,7 @@ function Login() {
   const status = useSelector(getLoginStaus);
   const accessGranted = useSelector(getAccessStatus)
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const userStatus = useSelector(getUserDataStatus);
+  const userStatus = useSelector(getUserLogInStatus);
   const googleAuthStatus = useSelector(getAuthStatus);
   const errorSound = useSound(ErrorSound, 0.1);
 
@@ -60,7 +60,6 @@ function Login() {
   useEffect(()=>{
     dispatch(setSidebarOff())
     dispatch(setOrderOff())
-    dispatch(fetchUserData())
     const link = document.createElement('link');
     link.rel = 'preload';
     link.as = 'image';
@@ -77,12 +76,12 @@ function Login() {
       .required('Password is required'),
   });
 
-  
+
   useEffect(()=>{
-    if(accessGranted || STATUS.SUCCESS === userStatus){
+    if(accessGranted || userStatus){
       navigate('/user')
     }
-  }, [accessGranted, navigate, userStatus])
+  }, [accessGranted, userStatus, navigate])
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {

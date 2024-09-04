@@ -74,7 +74,7 @@ function Home() {
                             <div className='w-3 h-3 rounded-full bg-red-700 text-white flex items-center justify-center absolute top-0 right-0 text-[10px]'>{cartItem.length}</div>
                         </div>
                     </div>
-                    <div className='xl:w-[600px]'>
+                    <div className='xl:w-[600px] md:w-[650px]'>
                         <h1 className="text-white text-4xl md:text-5xl 2xl:text-[66px] leading-[43px] 2xl:leading-[96px] mt-10 font-bold">
                             Welcome! <br /> We Made Delicious <br /> Food For You
                         </h1>

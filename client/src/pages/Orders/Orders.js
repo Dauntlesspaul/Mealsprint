@@ -21,6 +21,7 @@ import WatchLaterOutlinedIcon from '@mui/icons-material/WatchLaterOutlined';
 import { getCartStatus } from '../../store/cartSlice.js';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AlertDialogSlide from '../../components/Dialog/Logout.js';
+import { fetchUserData, getUserData, getUserDataStatus, getUserLogInStatus } from '../../store/profileSlice.js';
 
 function Orders() {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ function Orders() {
   useEffect(() => {
     dispatch(setSidebarOff());
     dispatch(setOrderOff());
+    dispatch(fetchUserData())
     dispatch(fetchMyOrders());
     const link = document.createElement('link');
     link.rel = 'preload';
@@ -37,20 +39,22 @@ function Orders() {
     document.head.appendChild(link);
   }, [dispatch]);
 
-
+  const userData = useSelector(getUserData)
   const orderList = useSelector(getOrderList);
   const status = useSelector(getOrderListStatus);
+  const loginStatus = useSelector(getUserDataStatus)
+  const isUserLoggedIn = useSelector(getUserLogInStatus)
   const cartItems = useSelector(getCartStatus);
 
 
   useEffect(()=>{
-    if(status === STATUS.FAILED){
-     navigate('/login')
+    if(!isUserLoggedIn && loginStatus === STATUS.FAILED){
+       navigate('/login')
     }
-   }, [status, navigate])
+    }, [isUserLoggedIn, navigate, loginStatus])
 
 
-  if (STATUS.LOADING === status) {
+  if (!userData.firstname || STATUS.LOADING === status) {
     return <Loading />;
   }
 

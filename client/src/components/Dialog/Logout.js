@@ -36,7 +36,7 @@ export default function AlertDialogSlide() {
     dispatch(resetGoogleAuth())
     dispatch(userLogout())
     .then(() => {
-        navigate('/login'); 
+        navigate('/login');
       });
   }
 

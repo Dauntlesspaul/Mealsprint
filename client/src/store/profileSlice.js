@@ -43,7 +43,7 @@ const initialState = {
         builder
         .addCase(fetchUserData.pending, (state) =>{
             state.userDataStatus = STATUS.LOADING;
-            state.loggedIn = true;
+            state.loggedIn = false;
         })
         .addCase(fetchUserData.fulfilled, (state, action) =>{
             state.userData = action.payload;

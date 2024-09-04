@@ -59,9 +59,8 @@ const loginInputSlice = createSlice({
   extraReducers: (builder) =>{
     builder
     .addCase(userLogin.pending, (state) =>{
-      state.accessed = false;
       state.loginStatus = STATUS.LOADING;
-      state.loginMessage = '';
+      state.accessed = false;
     })
     .addCase(userLogin.fulfilled, (state) =>{
       state.accessed = true;
