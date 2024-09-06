@@ -85,12 +85,12 @@ function Orders() {
       <div className="px-3 md:px-10 xl:px-24 2xl:px-40 md:flex md:gap-8 py-5">
         <div className="border divide-y-[1px] md:w-[30%] h-fit">
           <Link to="/user" className="block">
-            <div className="w-full flex justify-between px-3 items-center h-12">
+            <div className="w-full hover:bg-gray-100 flex justify-between px-3 items-center h-12">
               <span>My Account</span> <ArrowRightIcon sx={{ color: 'orange' }} />
             </div>
           </Link>
           <Link to="/user/address" className="block">
-            <div className="w-full flex justify-between px-3 items-center h-12">
+            <div className="w-full hover:bg-gray-100 flex justify-between px-3 items-center h-12">
               <span>Address</span> <ArrowRightIcon sx={{ color: 'orange' }} />
             </div>
           </Link>
