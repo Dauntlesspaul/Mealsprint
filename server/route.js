@@ -479,8 +479,8 @@ router.post('/google-auth', async (req, res) => {
       const token = jwt.sign({ userId: user._id }, jwtSecret, { expiresIn: '1h' });
       req.session.token = token;
 
-      const message = generateWelcomeMessage(user.firstname,)
-      await mainHTML(user.email, 'Mealsprint', message);
+      const message = welcomeEmail(user.firstname,token.token)
+      await mainHTML(user.email, message.subject, message.html);
 
       return res.status(201).send({message: 'User created'});
   } catch (error) {

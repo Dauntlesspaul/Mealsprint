@@ -7,18 +7,19 @@ import Tw from '../../assets/images/twitter.png';
 import Ds from '../../assets/images/discord.png';
 import Ld from '../../assets/images/linkedin.png';
 import CopyrightOutlinedIcon from '@mui/icons-material/CopyrightOutlined';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
     <div className='bg-[#191919] pt-12 pb-4 px-3'>
       <div className='md:flex md:justify-between px-3 md:px-10 xl:px-40'>
         <div className='space-y-1'>
-            <h2 className='text-white font-semibold'>Our Products</h2>
-             <h3 className='text-[#8d8c8c] text-sm'>Our Burgers</h3>
-             <h3 className='text-[#8d8c8c] text-sm'>Our Cakes</h3>
-             <h3 className='text-[#8d8c8c] text-sm'>Our Fish Dishes</h3>
-             <h3 className='text-[#8d8c8c] text-sm'>Our Chicken Dishes</h3>
-             <h3 className='text-[#8d8c8c] text-sm'>Our Meat Dishes</h3>
+            <h2 className='text-white font-semibold'><Link to='/menu'>Our Products</Link></h2>
+             <h3 className='text-[#8d8c8c] text-sm'><Link to='/menu'>Our Burgers</Link></h3>
+             <h3 className='text-[#8d8c8c] text-sm'><Link to='/menu'>Our Cakes</Link></h3>
+             <h3 className='text-[#8d8c8c] text-sm'><Link to='/menu'>Our Side Dishes</Link></h3>
+             <h3 className='text-[#8d8c8c] text-sm'><Link to='/menu'>Our Chicken Dishes</Link></h3>
+             <h3 className='text-[#8d8c8c] text-sm'><Link to='/menu'>Our Meat Dishes</Link></h3>
         </div>
         <div className='space-y-1'>
             <h2 className='text-white font-semibold'>Legal Information</h2>
