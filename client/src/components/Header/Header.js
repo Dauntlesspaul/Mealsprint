@@ -123,7 +123,7 @@ function Header() {
               }}
               onClick={handleNavigation}
             >
-              {currentPath === '/'  || currentPath === '/checkout' || currentPath === '/menu' || currentPath === '/order/details' || currentPath === '/about' || currentPath === '/login' ? (<><span>Become a member</span><ArrowCircleRightIcon /></>) : 
+              {currentPath === '/'  || currentPath === '/order/checkout' || currentPath === '/menu' || currentPath === '/order/details' || currentPath === '/about' || currentPath === '/login' ? (<><span>Become a member</span><ArrowCircleRightIcon /></>) : 
               (<><span>Login</span><ArrowCircleRightIcon /></>)
             }
             </Button>)
