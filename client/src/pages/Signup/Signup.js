@@ -38,6 +38,7 @@ function Signup() {
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const isLoading = useSelector(getUserDataStatus);
+  console.log(isLoading)
   const googleAuthStatus = useSelector(getAuthStatus)
   useEffect(() => {
     dispatch(setSidebarOff())

@@ -12,7 +12,7 @@ const ProtectedRoute = ({ children }) => {
   }, [dispatch])
 
   const loggedIn = useSelector(getUserLogInStatus);
- console.log(loggedIn)
+
   if (loggedIn) {
     return <Navigate to="/user" />;
   }
