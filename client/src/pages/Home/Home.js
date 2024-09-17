@@ -22,12 +22,14 @@ import Loading from '../../components/Loading/Loading.js';
 import OrderSlide from '../../components/OrderSlide/OrderSlide.js';
 import ScrollToTop from '../../components/Scroll/Button.js';
 import { allProductsFetch, AllProductsStatus } from '../../store/allproductsSlice.js';
+import { getUserDataStatus } from '../../store/profileSlice.js';
 
 function Home() {
     const dispatch = useDispatch();
     const foodItem = useSelector(getIntroProducts);
     const navigate = useNavigate()
     const isLoading = useSelector(AllProductsStatus)
+    const userStatus = useSelector(getUserDataStatus)
     useEffect(() => {
         dispatch(introProductsFetch('all'));
         dispatch(allProductsFetch())
@@ -45,7 +47,7 @@ function Home() {
 
     const cartItem = useSelector(getCartStatus)
 
-    if(STATUS.LOADING === isLoading || STATUS.IDLE === isLoading){
+    if(STATUS.LOADING === isLoading || STATUS.LOADING === isLoading || STATUS.LOADING === userStatus){
         return <Loading />
     }
     return (

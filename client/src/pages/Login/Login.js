@@ -27,7 +27,7 @@ import { getAccessStatus, getLoginInput, getLoginStaus, resetLoginStatus, setCha
 import {FormHelperText} from '@mui/material';
 import {STATUS} from '../../utils/status.js';
 import CustomizedSnackbars from '../../components/snackBar/SnackBar.js'
-import { getUserLogInStatus } from '../../store/profileSlice.js'
+import { getUserLogInStatus, resetLoggedIn } from '../../store/profileSlice.js'
 import Loading from '../../components/Loading/Loading.js'
 import { getAuthStatus, googleAuth } from '../../store/googleSlice.js';
 import { useGoogleLogin } from '@react-oauth/google';
@@ -78,10 +78,11 @@ function Login() {
 
 
   useEffect(()=>{
-    if(accessGranted || userStatus){
+    if(accessGranted){
+      dispatch(resetLoggedIn())
       navigate('/user')
     }
-  }, [accessGranted, userStatus, navigate])
+  }, [accessGranted, dispatch, userStatus, navigate])
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {

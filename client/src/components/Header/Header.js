@@ -9,11 +9,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCartStatus } from '../../store/cartSlice';
 import { setOrderOn } from '../../store/orderSlice';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { fetchUserData, getUserData, getUserDataStatus } from '../../store/profileSlice';
+import { fetchUserData, getUserData} from '../../store/profileSlice';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import OrderSlide from '../OrderSlide/OrderSlide';
-import { STATUS } from '../../utils/status';
-import Loading from '../Loading/Loading';
 
 function Header() {
   const navigate = useNavigate();
@@ -24,7 +22,6 @@ function Header() {
 
  
   const userData = useSelector(getUserData);
-  const isLoading = useSelector(getUserDataStatus);
 
   useEffect(() => {
     if (currentPath !== '/login' && currentPath !== '/signup') {
@@ -53,10 +50,6 @@ function Header() {
       return navigate('/signup')
    }
 
- }
-
- if(STATUS.LOADING === isLoading){
-  return <Loading/> ;
  }
 
   return (

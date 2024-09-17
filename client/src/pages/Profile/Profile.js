@@ -12,7 +12,7 @@ import OrderSlide from '../../components/OrderSlide/OrderSlide.js';
 import { setOrderOff, setOrderOn } from '../../store/orderSlice.js';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import BasicModal from '../../components/Modals/Profilemodal.js';
-import { fetchUserData, getUserData, getUserDataStatus, getUserLogInStatus } from '../../store/profileSlice.js';
+import { fetchUserData, getUserData, getUserDataStatus} from '../../store/profileSlice.js';
 import { getEditStaus } from '../../store/profileEditSlice.js';
 import AlertDialogSlide from '../../components/Dialog/Logout.js';
 import {InputAdornment, CircularProgress } from '@mui/material';
@@ -65,9 +65,8 @@ function Profile() {
   const dispatch = useDispatch();
   const editStatus = useSelector(getEditStaus)
   const [showPassword, setShowPassword] = useState(false);
-  const isUserLoggedIn = useSelector(getUserLogInStatus)
   const userData = useSelector(getUserData)
-  const status = useSelector(getUserDataStatus)
+  const loggedInStatus = useSelector(getUserDataStatus)
   const passwordStatus = useSelector(getchangePasswordStatus)
   const picDialogueState = useSelector(getPicDialogueState);
   const isCropperOn = useSelector(getCropperStatus);
@@ -95,11 +94,7 @@ function Profile() {
   }, [dispatch, editStatus])
   
   
-  useEffect(()=>{
-  if(!isUserLoggedIn && status === STATUS.FAILED){
-     navigate('/login')
-  }
-  }, [isUserLoggedIn, navigate, status])
+
 
   useEffect(()=>{
    if(STATUS.SUCCESS === passwordStatus || STATUS.FAILED === passwordStatus){
@@ -120,8 +115,14 @@ function Profile() {
      return () => clearTimeout(timer);
     }
    }, [dispatch,navigate, newPasswordStatus]);
+ 
+  useEffect(()=>{
+    if(loggedInStatus === STATUS.FAILED){
+      navigate('/login')
+    }
+  }, [navigate, loggedInStatus])
 
-  if (!userData.firstname || isPassword === STATUS.IDLE) {
+  if (!userData.firstname || isPassword === STATUS.LOADING) {
     return <Loading/>;
   }
  
