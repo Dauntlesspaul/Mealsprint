@@ -1,8 +1,8 @@
-# 🍔 MealSprint – Fast & Reliable Food Delivery
+# 🍔 MealSprint – We Made Delicious Food For You
 
 **MealSprint** is a modern, full-stack food delivery web application that brings your favorite meals to your doorstep. Built with the MERN stack and powered by Stripe for secure payments, MealSprint offers a seamless experience for users to browse meals, place orders, and track their history—all in one place.
 
-🚀 Live: [https://mealsprint.live](https://mealsprint.vercel.app) 
+🚀 Live: [mealsprint](https://mealsprint.vercel.app) 
 
 ---
 
@@ -36,7 +36,7 @@
 > Add your actual screenshots here (home, meal page, checkout, order history)
 
 - **Home Page**  
- ![Image](https://github.com/user-attachments/assets/0639a2ed-aea0-4165-aab2-977701a1f2
+![Image](https://github.com/user-attachments/assets/5a876ba4-a56c-46af-ab7d-56d64fbff082)
 - **Menu Page**
   ![Image](https://github.com/user-attachments/assets/c6f761a6-bd03-4ca8-ad65-2d4706a8d55b)
 
